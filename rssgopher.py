@@ -36,15 +36,17 @@ def wrap(text, width):
                   text.split(' ')
                  )
 
-for entry in feed['entries']:
-    i = i + 1
-    text = entry['description']
-    text = html2text.html2text(text)
-
-    filename = title2filename(entry['title'], i)
-    
+def entry2text(entry):
+    text = html2text.html2text(entry['description']) + "\n\n" + entry['link']
     if isinstance(text,unicode): text = text.encode("iso-8859-15","replace")
     text = wrap(text,80)
+    return text
+
+for entry in feed['entries']:
+    i = i + 1
+    
+    text = entry2text(entry)
+    filename = title2filename(entry['title'], i)
 
     try:
         f = open(filename, "w")
