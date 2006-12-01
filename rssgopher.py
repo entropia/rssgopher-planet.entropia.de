@@ -7,15 +7,16 @@ filepath = "/var/gopher/planet/"
 i = 0
 
 def title2filename(title, i):
-  if isinstance(title,unicode): title = title.encode("iso-8859-15", "replace")
+  #if isinstance(title,unicode): title = title.encode("iso-8859-15", "replace")
   title = re.compile("\/").sub("-", title) 
-  title = re.compile("ä").sub("ae", title) 
-  title = re.compile("ü").sub("ue", title) 
-  title = re.compile("ö").sub("oe", title) 
-  title = re.compile("Ä").sub("Ae", title) 
-  title = re.compile("Ü").sub("Ue", title) 
-  title = re.compile("Ö").sub("Oe", title) 
-  title = re.compile("ß").sub("ss", title) 
+  title = re.compile("Ã¤").sub("ae", title) 
+  title = re.compile("Ã¼").sub("ue", title) 
+  title = re.compile("Ã¶").sub("oe", title) 
+  title = re.compile("Ã„").sub("Ae", title) 
+  title = re.compile("Ãœ").sub("Ue", title) 
+  title = re.compile("Ã–").sub("Oe", title) 
+  title = re.compile("ÃŸ").sub("ss", title) 
+  title = re.compile("\.+$").sub("", title) 
   
   filename = "%sfeed-%02d-%s.txt" % (filepath, i, title)  
   
