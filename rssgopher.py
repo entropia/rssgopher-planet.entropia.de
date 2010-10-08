@@ -16,7 +16,7 @@ def title2filename(title, i):
   title = re.compile("Ü").sub("Ue", title) 
   title = re.compile("Ö").sub("Oe", title) 
   title = re.compile("ß").sub("ss", title) 
-  title = re.compile("\.+$").sub("", title) 
+  title = re.compile("\.+").sub("", title) 
   
   filename = "%sfeed-%02d-%s.txt" % (filepath, i, title)  
   
